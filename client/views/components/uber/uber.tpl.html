@@ -1,0 +1,16 @@
+<!-- // ADDED R.S  -->
+<h3>Uber Trip Page</h3>
+<h3 ng-if="loading">Loading...</h3>
+<ul ng-if="!loading">
+  <h3>Uber Products</h3>
+  <h3>Destination Latitude: {{restaurantLocationObj.coordinate.latitude}}</h3>
+   <h3>Destination Longitude: {{restaurantLocationObj.coordinate.longitude}}</h3>
+   <h3>Destination Address: {{restaurantLocationObj.display_address.join(', ')}}</h3>
+  <li ng-repeat="product in products">
+    <h4>{{product.description}}</h4>
+    <h4>{{product.display_name}}</h4>
+    <img ng-src="{{product.image}}"/>
+    <h4>{{product.product_id}}</h4>
+    <button ng-click="orderUberRide(userLocationObj, restaurantLocationObj.coordinate, product.product_id)">Order {{product.display_name}}</button>
+  </li>
+</ul>

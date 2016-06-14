@@ -32,10 +32,14 @@ gulp.task('browser-sync', ['nodemon'], function() {
 
 // the real stuff
 gulp.task('default', ['browser-sync'], function () {
-  gulp.watch('./client/**/*.*', ['bs-delay', 'client-test']);
-  gulp.watch('./specs/unit/client/**/*.*', ['client-test']);
-  gulp.watch('./server/**/*.js', ['bs-delay', 'server-test']);
-  gulp.watch('./specs/unit/server/**/*.js', {interval: 5000}, ['server-test']);
+  // gulp.watch('./client/**/*.*', ['bs-delay', 'client-test']);
+  // gulp.watch('./specs/unit/client/**/*.*', ['client-test']);
+  // gulp.watch('./server/**/*.js', ['bs-delay', 'server-test']);
+  // gulp.watch('./specs/unit/server/**/*.js', {interval: 5000}, ['server-test']);
+    gulp.watch('./client/**/*.*', ['bs-delay']);
+  gulp.watch('./specs/unit/client/**/*.*');
+  gulp.watch('./server/**/*.js', ['bs-delay']);
+  gulp.watch('./specs/unit/server/**/*.js', {interval: 5000});
 });
 
 // give nodemon time to restart

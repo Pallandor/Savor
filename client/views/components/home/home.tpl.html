@@ -47,6 +47,8 @@
                     <li>Ambience: {{restaurant.ambienceRating}}</li>
                     <li>Price per: {{'$' + restaurant.priceRating}}</li>
                     <li>Yelp Rating: <img ng-if="restaurant.yelp" ng-src="{{restaurant.yelp.rating_img_url_small}}"></img></li>
+                    <!-- ADDED R.S -->
+                    <button ng-click="goToUberPage(restaurant.yelp.location)">Order Uber to {{restaurant.restaurantName}}</button>
                   </ul>
                 </div>
               </div>

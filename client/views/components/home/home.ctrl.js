@@ -1,14 +1,9 @@
 angular
   .module('savor.home',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'uiGmapgoogle-maps'])
-  .controller('homeController', function($scope, $http, uiGmapGoogleMapApi) {
+  .controller('homeController', function($scope, $http, uiGmapGoogleMapApi, uber) {
 
-    //refresh function that was an attempt to get just added restaurant to render on page without a refresh
-    /*window.refresh = function() {
-      $http.get('/api/restaurants').then(function (response) {
-        console.log('hello');
-        $scope.restaurants = response.data;
-      })
-    };*/
+   $scope.goToUberPage = uber.goToUberPage; 
+
 
     $scope.profile = JSON.parse(localStorage.getItem('profile'));
 

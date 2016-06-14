@@ -1,9 +1,11 @@
-angular
+var app = angular
   .module('savor', [
     'savor.toolbar',
     'savor.review',
     'savor.profile',
     'savor.user',
+    // ADDED R.S
+    'savor.uber',
     'savor.home',
     'auth0',
     'angular-storage',
@@ -12,7 +14,8 @@ angular
     'ngDialog',
     'ngMaterial',
     'material.svgAssetsCache',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'geolocation'
   ])
 
 
@@ -48,9 +51,22 @@ angular
       controller: 'testController',
     })
     .state('/', {
-      url: '/',
+      url: '/?accessToken',
       templateUrl: '/views/components/home/home.tpl.html',
-      controller: 'homeController'
+      controller: 'homeController',
+      onEnter: ['$stateParams', '$state', 'uber', function($stateParams, $state, uber) {
+         if ($stateParams.accessToken){
+            // debugger; 
+            uber.saveToken($stateParams.accessToken);
+            alert('Uber session authorized! Redirecting to Uber Trip Page...'); 
+            $state.go('uber'); 
+          }
+      }]
+    })
+    .state('uber', {
+      url: '/uber',
+      templateUrl: '/views/components/uber/uber.tpl.html',
+      controller: 'uberController'
     });
 
     uiGmapGoogleMapApiProvider.configure({

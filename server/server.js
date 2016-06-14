@@ -43,6 +43,13 @@ io.on('connection', function(socket) {
 // API endpoints
 var handler = require('./handlers/handlers');
 
+// CHANGED
+app.get('/api/uberlogin', handler.loginUber);
+app.get('/api/uberauthorize', handler.finalizeUberAuthorization);
+app.post('/api/uberproducts', handler.getUberProducts); 
+app.post('/api/uberorder', handler.orderUberRide); 
+// app.post('/api/ubereta', handler,getUberETA); 
+
 // use this route with review submit button
 app.post('/api/restaurants', handler.addRestaurant);
 
